@@ -22,6 +22,19 @@
 
     <slot />
 
+    <div v-if="showPagination"
+      style="margin-top: 10px;text-align: right;">
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="pagination.pageIndex"
+        :page-sizes="pageSizes"
+        :page-size="pagination.pageSize"
+        :layout="paginationLayout"
+        :total="total">
+      </el-pagination>
+    </div>
+
     <el-table v-loading.lock="loading"
       ref="table"
       :data="tableData"
